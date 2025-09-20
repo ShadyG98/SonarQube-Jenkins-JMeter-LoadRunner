@@ -47,7 +47,7 @@ Se recomienda un flujo básico de CI/CD con QA:
 - [SonarQube](https://www.sonarqube.org/)  
 - [Jenkins](https://www.jenkins.io/)  
 - [JMeter](https://jmeter.apache.org/)  
-- [LoadRunner]([https://www.microfocus.com/documentation/loadrunner-professional/](https://docs.microfocus.com/doc/123/9.60/configrunloadtest))  
+- [LoadRunner](https://docs.microfocus.com/doc/123/9.60/configrunloadtest)  
 
 ---
 
