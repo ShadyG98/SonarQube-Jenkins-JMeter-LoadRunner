@@ -66,6 +66,7 @@ http://localhost:9000
 
 * Por defecto el user y pass es admin:admin; Debes modificarlo a un mejor pass. La seccion mas importante sera la pestaña de Rules que estaremos utilizando.
 
-![Captura de Login](image.png)
-![Menu de Sonar](image-1.png)
-![Rules](image-2.png)
+![Captura de Login](Images/SonarLogin.png)
+![Docker Server](Images/Docker-Server.png)
+![Menu de Sonar](Images/SonarMenu.png)
+![Rules](Images/SonarRules.png)
