@@ -1,8 +1,11 @@
-## 🌐 Idiomas
+## 🌐 Idiomas / Languages
 - 🇪🇸 [Español](#-explicación-en-español)
 - 🇬🇧 [English](#-explanation-in-english)
 
 ---
+
+## 🇬🇧 Explanation in English
+
 
 ## 🇪🇸 Explicación en Español
 
@@ -229,5 +232,5 @@ Aquí algunos enlaces para ampliar la información:
 
 ---
 
-## 🇬🇧 Explanation in English
+
 
