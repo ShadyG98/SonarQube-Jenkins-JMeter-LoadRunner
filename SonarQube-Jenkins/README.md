@@ -1,3 +1,11 @@
+## 🌐 Idiomas
+- 🇪🇸 [Español](#-explicación-en-español)
+- 🇬🇧 [English](#-explanation-in-english)
+
+---
+
+## 🇪🇸 Explicación en Español
+
 # 🚀 SonarQube con Docker
 
 Guía paso a paso para instalar y ejecutar **SonarQube** usando **Docker**.  
@@ -217,3 +225,9 @@ Aquí algunos enlaces para ampliar la información:
 - [🐳 SonarQube en Docker](https://hub.docker.com/_/sonarqube)  
 
 ---
+
+
+---
+
+## 🇬🇧 Explanation in English
+
