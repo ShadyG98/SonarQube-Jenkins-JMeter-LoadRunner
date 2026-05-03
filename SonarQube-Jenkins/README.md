@@ -1,154 +1,150 @@
-## 🌐 Idiomas / Languages
-- 🇪🇸 [Español](#-explicación-en-español)
-- 🇬🇧 [English](#-explanation-in-english)
-
----
-
 ## 🇬🇧 Explanation in English
 
+# 🚀 SonarQube with Docker
 
-## 🇪🇸 Explicación en Español
-
-# 🚀 SonarQube con Docker
-
-Guía paso a paso para instalar y ejecutar **SonarQube** usando **Docker**.  
+Step-by-step guide to install and run **SonarQube** using **Docker**.
 
 ---
 
-## 📦 Requisitos previos
-- Tener instalado **Docker Desktop (Community Edition)**.  
-- Activar **Hyper-V** o la máquina virtual en tu sistema (según SO).  
-- Tener una cuenta en [Docker Hub](https://hub.docker.com/) e iniciar sesión.  
+## 📦 Prerequisites
+- Have **Docker Desktop (Community Edition)** installed.
+- Enable **Hyper-V** or the virtual machine in your system (according to OS).
+- Have an account on [Docker Hub](https://hub.docker.com/) and log in.
 
 ---
 
-## 🐳 1. Obtener la imagen oficial
-Abre una terminal en Docker Desktop y ejecuta:
+## 🐳 1. Get the official image
+Open a terminal in Docker Desktop and run:
 docker pull sonarqube:community
-🔹 Para la versión Long Term Support (LTS):
+🔹 For the Long Term Support (LTS) version:
 ```
 docker pull sonarqube:lts-community
 ```
-## 🛠 2. (Opcional) Crear una imagen personalizada
-Si necesitas añadir plugins preinstalados u otras configuraciones:
 
-## Clonar repositorio de Bitnami
+## 🛠 2. (Optional) Create a custom image
+If you need to add pre-installed plugins or other configurations:
+
+## Clone Bitnami repository
 git clone https://github.com/bitnami/containers.git
 
-## Entrar al directorio de SonarQube
+## Enter the SonarQube directory
 ```
 cd bitnami/sonarqube/VERSION/OPERATING-SYSTEM
 ```
-## Construir la imagen personalizada
+
+## Build the custom image
 ```
 docker build -t mi-sonarqube:latest .
 ```
-## ▶️ 3. Ejecutar SonarQube
-Con la imagen lista (oficial o personalizada), levanta un contenedor:
+
+## ▶️ 3. Run SonarQube
+With the image ready (official or custom), start a container:
 ```
 docker run -d --name sonarqube -p 9000:9000 sonarqube:lts-community
 ```
-## 🔍 Explicación rápida
+
+## 🔍 Quick explanation
 ```
--d → ejecuta en segundo plano (detached mode).
+-d → runs in background (detached mode).
 
---name sonarqube → nombre del contenedor.
+--name sonarqube → container name.
 
--p 9000:9000 → expone el puerto 9000.
+-p 9000:9000 → exposes port 9000.
 ```
-## 🌐 4. Acceder a SonarQube
-Abre tu navegador en:
 
+## 🌐 4. Access SonarQube
+Open your browser at:
 👉 http://localhost:9000
 
-Desde aquí podrás usar la interfaz gráfica y configurar tu instancia.
+From here you can use the graphical interface and configure your instance.
 
-📋 Cheat Sheet (Resumen rápido)
-## Descargar imagen
+📋 Cheat Sheet (Quick summary)
+## Download image
 ```
 docker pull sonarqube:lts-community
 ```
-## Ejecutar contenedor
+
+## Run container
 ```
 docker run -d --name sonarqube -p 9000:9000 sonarqube:lts-community
 ```
-## Acceder en navegador
+
+## Access in browser
 http://localhost:9000
 
-* Por defecto el user y pass es admin:admin; Debes modificarlo a un mejor pass. La seccion mas importante sera la pestaña de Rules que estaremos utilizando.
+* By default the user and password is admin:admin; You should change it to a better password. The most important section will be the Rules tab that we will be using.
 
-![Captura de Login](Images/SonarLogin.png)
+![Login Screen](Images/SonarLogin.png)
 ![Docker Server](Images/Docker-Server.png)
-![Menu de Sonar](Images/SonarMenu.png)
+![Sonar Menu](Images/SonarMenu.png)
 ![Rules](Images/SonarRules.png)
 
-# Flujo CI/CD con Jenkins
+# CI/CD Flow with Jenkins
 
-Este repositorio describe un flujo típico de **Integración Continua (CI)** y **Despliegue Continuo (CD)** utilizando **Jenkins** como herramienta de orquestación.  
+This repository describes a typical **Continuous Integration (CI)** and **Continuous Deployment (CD)** flow using **Jenkins** as the orchestration tool.
 
-El objetivo es automatizar desde la compilación del código hasta el despliegue y monitoreo, reduciendo errores manuales y acelerando la entrega de software.  
+The goal is to automate from code compilation to deployment and monitoring, reducing manual errors and accelerating software delivery.
 
 ---
 
-## 📊 Diagrama del flujo CI/CD
-
+## 📊 CI/CD Flow Diagram
 
 flowchart LR
-    A[📦 Código Fuente] --> B[🤖 CI - Integración Continua<br/>(Build, Tests, Herramientas de Automatización)]
-    B --> C[🚀 CD - Despliegue Continuo<br/>(Deploy en entornos)]
-    C --> D[⚙️ Gestión Post-Despliegue<br/>(Monitoreo, Mantenimiento, Feedback)]
+    A[📦 Source Code] --> B[🤖 CI - Continuous Integration<br/>(Build, Tests, Automation Tools)]
+    B --> C[🚀 CD - Continuous Deployment<br/>(Deployment to environments)]
+    C --> D[⚙️ Post-Deployment Management<br/>(Monitoring, Maintenance, Feedback)]
 
-    %% Jenkins en todo el proceso
-    B -.-> E[Jenkins - Orquestador CI/CD]
+    %% Jenkins throughout the process
+    B -.-> E[Jenkins - CI/CD Orchestrator]
     C -.-> E
 
-## ⚙️ Explicación de cada etapa del flujo CI/CD
+---
 
-Este flujo asegura calidad, automatización y entregas rápidas mediante un proceso controlado y escalable.
+## ⚙️ Explanation of each CI/CD flow stage
+
+This flow ensures quality, automation, and fast deliveries through a controlled and scalable process.
 
 ---
 
-## 📂 Código Fuente (Source Code)
-- 📦 El repositorio contiene el **código de la aplicación**.  
-- 🔄 Uso de **control de versiones** con GitHub, GitLab o Bitbucket.  
+## 📂 Source Code (Source Code)
+- 📦 The repository contains the **application code**.
+- 🔄 Use of **version control** with GitHub, GitLab, or Bitbucket.
 
 ---
 
-## 🔄 Integración Continua (CI)
-- 🏗 **Compilación del código**.  
-- ✅ Ejecución de **tests automatizados** (unitarios, integración, funcionales).  
-- 🔍 **Análisis estático de calidad** con herramientas como **SonarQube**.  
-- 📑 **Generación de reportes** para validar el estado del proyecto.  
+## 🔄 Continuous Integration (CI)
+- 🏗 **Code compilation**.
+- ✅ Execution of **automated tests** (unit, integration, functional).
+- 🔍 **Static quality analysis** with tools like **SonarQube**.
+- 📑 **Report generation** to validate project status.
 
 ---
 
-## 🚀 Despliegue Continuo (CD)
-- 🔄 **Despliegue automático** a entornos de **testing**, **staging** o **producción**.  
-- 🐳 Uso de **contenedores (Docker/Kubernetes)** para asegurar portabilidad y escalabilidad.  
+## 🚀 Continuous Deployment (CD)
+- 🔄 **Automatic deployment** to **testing**, **staging**, or **production** environments.
+- 🐳 Use of **containers (Docker/Kubernetes)** to ensure portability and scalability.
 
 ---
 
-## 📡 Gestión Post-Despliegue
-- 📊 **Monitoreo de la aplicación** en tiempo real.  
-- 📜 **Logs centralizados** para depuración eficiente.  
-- 🚨 **Alertas de rendimiento y errores** configuradas automáticamente.  
-- 🔁 **Retroalimentación** al equipo de desarrollo para mejora continua.  
+## 📡 Post-Deployment Management
+- 📊 **Real-time application monitoring**.
+- 📜 **Centralized logs** for efficient debugging.
+- 🚨 **Automatically configured performance and error alerts**.
+- 🔁 **Feedback** to the development team for continuous improvement.
 
 ---
 
 ## 🛠 Jenkins
-- 🎯 Actúa como **orquestador central**.  
-- 🤖 Automatiza la ejecución de todas las etapas: **build**, **tests**, **despliegue** y **monitoreo**.  
-- 🔌 Compatible con múltiples **plugins y herramientas externas**.  
-
-
+- 🎯 Acts as the **central orchestrator**.
+- 🤖 Automates execution of all stages: **build**, **tests**, **deployment**, and **monitoring**.
+- 🔌 Compatible with multiple **plugins and external tools**.
 
 ```
 pipeline {
     agent any
 
     stages {
-        stage('Checkout Código') {
+        stage('Checkout Code') {
             steps {
                 git branch: 'main', url: 'https://github.com/usuario/proyecto.git'
             }
@@ -156,7 +152,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo 'Compilando aplicación...'
+                echo 'Compiling application...'
                 sh 'npm install'
                 sh 'npm run build'
             }
@@ -164,7 +160,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                echo 'Ejecutando tests...'
+                echo 'Running tests...'
                 sh 'npm test'
             }
             post {
@@ -174,24 +170,24 @@ pipeline {
             }
         }
 
-        stage('Análisis de Calidad') {
+        stage('Quality Analysis') {
             steps {
-                echo 'Ejecutando análisis con SonarQube...'
+                echo 'Running analysis with SonarQube...'
                 sh 'sonar-scanner'
             }
         }
 
-        stage('Despliegue') {
+        stage('Deployment') {
             steps {
-                echo 'Desplegando aplicación...'
+                echo 'Deploying application...'
                 sh 'docker build -t mi-app .'
                 sh 'docker run -d -p 8080:8080 mi-app'
             }
         }
 
-        stage('Post-Despliegue') {
+        stage('Post-Deployment') {
             steps {
-                echo 'Verificando estado de la aplicación...'
+                echo 'Verifying application status...'
                 sh 'curl -I http://localhost:8080'
             }
         }
@@ -199,38 +195,34 @@ pipeline {
 
     post {
         success {
-            echo '✅ Pipeline completado exitosamente.'
+            echo '✅ Pipeline completed successfully.'
         }
         failure {
-            echo '❌ El pipeline falló, revisar logs.'
+            echo '❌ Pipeline failed, check logs.'
         }
     }
 }
-
 ```
-# 🚀 Beneficios de este flujo CI/CD
 
-Este flujo de trabajo con Jenkins ofrece múltiples ventajas al equipo de desarrollo y operaciones:
+# 🚀 Benefits of this CI/CD Flow
 
-- ✅ **Automatización completa**: Desde la compilación (build) hasta el despliegue (deploy).  
-- 🛡 **Menos errores humanos**: Validaciones automáticas en cada commit.  
-- ⚡ **Entregas rápidas**: Reducción del ciclo de desarrollo y time-to-market.  
-- 📦 **Escalabilidad**: Compatible con contenedores y entornos en la nube.  
+This workflow with Jenkins offers multiple advantages to the development and operations team:
 
----
-
-## 📖 Recursos útiles
-
-Aquí algunos enlaces para ampliar la información:
-
-- [📘 Documentación oficial de Jenkins](https://www.jenkins.io/doc/)  
-- [🔧 Conceptos básicos de CI/CD](https://www.redhat.com/es/topics/devops/what-is-ci-cd)  
-- [🐳 SonarQube en Docker](https://hub.docker.com/_/sonarqube)  
+- ✅ **Complete automation**: From compilation (build) to deployment (deploy).
+- 🛡 **Fewer human errors**: Automatic validations on each commit.
+- ⚡ **Fast deliveries**: Reduced development cycle and time-to-market.
+- 📦 **Scalability**: Compatible with containers and cloud environments.
 
 ---
 
+## 📖 Useful Resources
+
+Here are some links to expand your knowledge:
+
+- [📘 Official Jenkins Documentation](https://www.jenkins.io/doc/)
+- [🔧 CI/CD Basic Concepts](https://www.redhat.com/es/topics/devops/what-is-ci-cd)
+- [🐳 SonarQube in Docker](https://hub.docker.com/_/sonarqube)
 
 ---
 
-
-
+---
